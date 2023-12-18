@@ -57,12 +57,13 @@ function loadViewCategoryChart() {
 				},
 				legend: {
 					orient: 'vertical',
-					left: 'left'
+					right: 'right',
 				},
 				series: [{
-					name: 'Access From',
-					type: 'pie',
-					radius: '50%',
+					 name: 'Access From',
+					 type: 'pie',
+					radius: '25%',
+					// // left: '0',
 					data: dataViewCategory,
 					emphasis: {
 						itemStyle: {

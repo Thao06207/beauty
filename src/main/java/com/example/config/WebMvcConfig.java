@@ -32,7 +32,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public MyAccessDeniedHandler accessDeniedHandler(){
 	    return new MyAccessDeniedHandler();
 	}
-
+   // ma hoa mat khau bang thuat toan bcrypt la tt ma hoa 1 chieu, no ma hoa mk cua User ko va ko cho giai ma hoa nguoc lai
+   // de ho tro service xu ly vc ma hoa va so sanh mat khau
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -50,7 +51,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
 		return authConfig.getAuthenticationManager();
 	}
-
+    
+	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.cors().and().csrf().disable()

@@ -16,23 +16,23 @@ function updateValueDisplay(id) {
 			} else {
 				price = response.data.price * response.data.quantity;
 			}
-			document.getElementById('viewTotailPrice' + id).innerHTML = formatVND(price, ' VND');
+			document.getElementById('viewTotailPrice' + id).innerHTML = formatVND(price, 0, 'POINT', 3, 'POINT') + 'VND';
 		})
 
 	axios.get(baseUrl + '/beauty/cart/totail-cart')
 		.then(function (response) {
 			let totailCart = 0;
 			totailCart = response.data;
-			document.getElementById('totailViewCart').innerHTML = formatVND(totailCart, ' VND');
+			document.getElementById('totailViewCart').innerHTML = formatVND(totailCart, 0, 'POINT', 3, 'POINT') + 'VND';
 			const ship = document.querySelector('input[name="shipping"]:checked').value;
 			if (ship === 1) {
-				totailCart = totailCart + 10000;
+				totailCart = totailCart + 10;
 			} else if (ship === 2) {
-				totailCart = totailCart + 20000;
+				totailCart = totailCart + 20;
 			} else {
 				totailCart = totailCart + 0;
 			}
-			document.getElementById('totailViewOrder').innerHTML = formatVND(totailCart, ' VND');
+			document.getElementById('totailViewOrder').innerHTML = formatVND(totailCart, 0, 'POINT', 3, 'POINT') + 'VND';
 		})
 }
 
@@ -44,15 +44,15 @@ function handleShipingClick() {
 			const ship = document.querySelector('input[name="shipping"]:checked').value;
 			let shipping = 0;
 			if (ship === '1') {
-				totailViewOrder = totailViewOrder + 10000;
+				totailViewOrder = totailViewOrder + 10;
 				shipping = 1;
 			} else if (ship === '2') {
-				totailViewOrder = totailViewOrder + 20000;
+				totailViewOrder = totailViewOrder + 20;
 				shipping = 2;
 			} else {
 				totailViewOrder = totailViewOrder + 0;
 			}
 			axios.post(baseUrl + '/beauty/cart/shipping?ship=' + shipping);
-			document.getElementById('totailViewOrder').innerHTML = formatVND(totailViewOrder, ' VND');
+			document.getElementById('totailViewOrder').innerHTML = formatVND(totailViewOrder,0, 'POINT', 3, 'POINT') + 'VND';
 		});
 }

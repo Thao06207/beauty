@@ -8,5 +8,5 @@ import lombok.Data;
 @Data
 public class StorageProperties {
 	private String location;
-
+   
 }
